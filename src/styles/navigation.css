@@ -1,0 +1,104 @@
+#navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    gap: 0rem;
+}
+.sidebarIconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    border-radius: 7px;
+}
+
+.sidebarIconContainer:hover {
+    background-color: #f0f0f0;
+}
+
+.sidebarIcon {
+    width: 24px;
+  height: 24px;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #f0f0f0;
+  padding: 0.3rem 0.5rem;
+border-radius: 5px;
+width: 10rem;
+}
+
+.searchContainer:focus-within {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border: solid 1px #ccc;
+}
+
+.searchIcon {
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.searchbar {
+  padding-right: 35px; /* Make room for the icon */
+  margin-left: 0.2em;
+  border: none;
+  background-color: transparent;
+    outline: none;
+}
+
+.darkmodeIconContainer {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+}
+
+.darkmodeIconContainer:hover {
+  background-color: #f0f0f0;
+}
+
+.darkmodeIcon{
+    height: 15px;
+    width: 15px;
+}
+
+.profileButtonsContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profileButtonsContainer button {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+}
+
+.signinButton {
+    background-color: white;
+    border-radius: 4px;
+}
+
+.signinButton:hover {
+    background-color: #f0f0f0;
+}
+
+.signupButton {
+    background-color: #030213;
+    color: white;
+    border-radius: 4px;
+}

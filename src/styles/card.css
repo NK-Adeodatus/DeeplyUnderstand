@@ -1,0 +1,54 @@
+.card {
+    border: solid 1px #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.mainContent{
+    display: flex;
+    gap: 1rem;
+
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+    padding-top: 25px;
+}
+
+.techUsedContainer {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.individualTech {
+    background-color: #f7f7f8;
+    border-radius: 7px;
+    padding: 4px 8px;
+}
+
+.techUsed {
+    margin: 0;
+}
+
+.extraContent {
+    color: #555555;
+}
+
+.upvoteIcon {
+    width: 15px;
+}
+
+.messageIcon {
+    width: 18px;
+}
+.bookmarkIcon {
+    width: 15px;
+}
+
+.moreInfo {
+    
+}

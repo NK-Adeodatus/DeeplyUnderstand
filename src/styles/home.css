@@ -1,0 +1,92 @@
+#homeMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f7f7f8;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#heading {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.homeText {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555555;
+}
+
+.buttonsContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.buttonsContainer button {
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.shareYourKnowledgeButton {
+    background-color: #030213;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.JoinTheCommunityButton {
+    background-color: white;
+    color: #030213;
+    border: 1px solid #ccc;
+}
+
+#addIcon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+#infoContainer {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    margin-top: 15px;
+    gap: 8px;
+    background-color: #f7f7f8;
+    border-radius: 50px;
+    padding: 3px 3px;
+}
+
+.outerContainer {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    border-radius: 50px;
+    padding: 5px 10px;
+}
+
+.selectedOuterContainer {
+    background-color: #ffffff;
+}
+
+.container {
+    padding: 0;
+}
+
+#trendingIconContainer, #recentIconConatainer, #starIconContainer {
+    padding: 0;
+}
+
+.innerText {
+    margin: 0;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+}
