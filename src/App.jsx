@@ -1,9 +1,20 @@
-import Home from './Home.jsx'
+import { Routes, Route } from 'react-router-dom'
+import Home from './Home'
+import Navigation from './Navigation'
+import SignIn from './SignIn'
+import SignUp from './SignUp'
 
-export default function App() {
+function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+    </>
   )
 }
+
+export default App

@@ -3,6 +3,7 @@ import sidebar from "/images/sidebar-toggle.svg"
 import search from "/images/search.svg"
 import dark from "/images/dark-mode-night-moon.svg"
 import "./styles/navigation.css"
+import { Link } from 'react-router-dom'
 
 export default function Navigation() {
   return (
@@ -18,8 +19,12 @@ export default function Navigation() {
         <img className="darkmodeIcon" src={dark} alt="darkmodeIcon" />
         </div>
       <div className="profileButtonsContainer">
-        <button className="signinButton">SignIn</button>
-        <button className="signupButton">Sign Up</button>
+        <Link to="/signin">
+          <button className="signinButton">SignIn</button>
+        </Link>
+        <Link to="/signup">
+          <button className="signupButton">Sign Up</button>
+        </Link>
       </div>
 
 
