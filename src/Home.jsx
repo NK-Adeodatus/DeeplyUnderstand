@@ -1,15 +1,15 @@
 // Homepage component
-import Navigation from "./Navigation"
 import "./styles/home.css"
 import add from "/images/add-circle.svg"
 import trending from "/images/trending-up.svg"
 import recent from "/images/time.svg"
 import star from "/images/star.svg"
 import Card from "./components/Card"
+import Sidebar from "./components/Sidebar"
 export default function Home() {
   return (
     <div className="home">
-        <Navigation />
+        <Sidebar />
         <main id="homeMain">
             <p id="heading">Learn How Technology Really Works</p>
             <p className="homeText">Join African developers in deep-diving into the inner workings of technologies, libraries, and programming concepts. Move beyond tutorials to true understanding.</p>

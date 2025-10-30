@@ -31,7 +31,7 @@ export default function Card() {
         </div>
         <div className="extraContent">
             <div className="abreviationContainer">
-                <p>TM</p>
+                <p className="abreviation">TM</p>
             </div>
             <div className="moreInfoContainer">
                 <p className="moreInfo">Tshepo Molefe • South Africa • 1 day ago</p>
