@@ -1,59 +1,65 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/sidebar.css";
+import logo from "/images/logo.svg";
+import home from "/images/home.svg";
+import explore from "/images/explore.svg";
+import createPost from "/images/add-ellipse-svgrepo-com.svg";
+import web from "/images/web.svg";
+import bookmarks from "/images/bookmarks.svg";
+import contributors from "/images/people.svg";
+import database from "/images/database.svg";
+import library from "/images/library.svg";
+import sidebar from "/images/sidebar-toggle.svg";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const sections = [
-    {
-      title: "Main",
-      items: [
-        { label: "Home", path: "/", icon: "🏠" },
-        { label: "Explore", path: "/explore", icon: "🔍" },
-        { label: "Create Post", path: "/create", icon: "✏️" }
-      ]
-    },
-    {
-      title: "Categories",
-      items: [
-        { label: "Web Development", path: "/web-dev", icon: "🌐" },
-        { label: "Programming Languages", path: "/languages", icon: "💻" },
-        { label: "Databases", path: "/databases", icon: "🗄️" },
-        { label: "Frameworks & Libraries", path: "/frameworks", icon: "📚" }
-      ]
-    },
-    {
-      title: "Community",
-      items: [
-        { label: "Contributors", path: "/contributors", icon: "👥" },
-        { label: "My Bookmarks", path: "/bookmarks", icon: "🔖" }
-      ]
-    },
-    {
-      title: "Settings",
-      items: [
-        { label: "Settings", path: "/settings", icon: "⚙️" },
-        { label: "Help & Support", path: "/support", icon: "❓" }
-      ]
-    }
-  ];
+  {
+    title: "Main",
+    items: [
+      { label: "Home", path: "/", icon: home },
+      { label: "Explore", path: "/explore", icon: explore },
+      { label: "Create Post", path: "/create", icon: createPost }
+    ]
+  },
+  {
+    title: "Categories",
+    items: [
+      { label: "Web Development", path: "/web-dev", icon: web },
+      { label: "Programming Languages", path: "/languages", icon: library },
+      { label: "Databases", path: "/databases", icon: database },
+      { label: "Frameworks & Libraries", path: "/frameworks", icon: library }
+    ]
+  },
+  {
+    title: "Community",
+    items: [
+      { label: "Contributors", path: "/contributors", icon: contributors },
+      { label: "My Bookmarks", path: "/bookmarks", icon: bookmarks }
+    ]
+  }
+];
 
+//☰
   return (
     <>
       <button className="menu-btn" onClick={() => setIsOpen(true)}>
-        ☰
+        <img src={sidebar} alt='sidebar' className="nav-icon" />
+        
       </button>
 
       <aside className={`sidebar ${isOpen && "open"}`}>
         <div className="sidebar-header">
           <div className="brand">
-            <span className="logo-icon">💻</span>
+            <img src={logo} alt="" className="logo-icon"/>
+            <span ></span>
             <span className="brand-name">TechDeep</span>
-          </div>
           <button className="close-btn" onClick={() => setIsOpen(false)}>
             ✖
           </button>
+          </div>
         </div>
 
         <div className="sidebar-content">
@@ -62,9 +68,10 @@ const Sidebar = () => {
               <p className="section-title">{section.title}</p>
               {section.items.map((item, i) => (
                 <Link to={item.path} className="sidebar-item" key={i}>
-                  <span className="icon">{item.icon}</span>
-                  <span>{item.label}</span>
+                    <img src={item.icon} alt={item.label} className="nav-icon" />
+                    <span>{item.label}</span>
                 </Link>
+
               ))}
             </div>
           ))}

@@ -6,6 +6,30 @@ import recent from "/images/time.svg"
 import star from "/images/star.svg"
 import Card from "./components/Card"
 import Sidebar from "./components/Sidebar"
+const cardsData = [
+  {
+    upvotes: 78,
+    title: "WebSockets vs Server-Sent Events: Implementation Details",
+    description: "A technical comparison of real-time communication protocols, examining TCP connections, browser APIs, and when to use each approach.",
+    technologies: ["WebSockets", "Real-time", "Networking"],
+    author: "Tshepo Molefe",
+    country: "South Africa",
+    timePosted: "1 day ago",
+    messageCount: 45
+  },
+  {
+    upvotes: 65,
+    title: "Understanding React's Virtual DOM Implementation",
+    description: "Deep dive into how React's reconciliation process works and how the virtual DOM optimizes rendering performance.",
+    technologies: ["React", "JavaScript", "Web Performance"],
+    author: "Amara Okafor",
+    country: "Nigeria",
+    timePosted: "2 days ago",
+    messageCount: 32
+  }
+  // Add more card data objects as needed
+];
+
 export default function Home() {
   return (
     <div className="home">
@@ -51,7 +75,19 @@ export default function Home() {
             </div>
         </div>
         <div className="cardsContainer">
-            <Card />
+            {cardsData.map((card, index) => (
+                <Card 
+                    key={index}
+                    upvotes={card.upvotes}
+                    title={card.title}
+                    description={card.description}
+                    technologies={card.technologies}
+                    author={card.author}
+                    country={card.country}
+                    timePosted={card.timePosted}
+                    messageCount={card.messageCount}
+                />
+            ))}
         </div>
     </div>
   )

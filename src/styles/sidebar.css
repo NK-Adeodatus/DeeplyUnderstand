@@ -26,6 +26,23 @@
 }
 
 .sidebar-header {
+    border-bottom: solid 1px #e0e0e0;
+    padding-bottom: 6px;
+}
+
+.sidebar-section {
+    margin-bottom: 2rem;
+    
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,7 +58,7 @@
 }
 
 .logo-icon {
-  font-size: 1.4rem;
+  width: 25px;
 }
 
 .close-btn {
@@ -49,6 +66,7 @@
   border: none;
   font-size: 1.6rem;
   cursor: pointer;
+  margin-left: auto;
 }
 
 .sidebar-content {
