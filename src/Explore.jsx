@@ -1,7 +1,6 @@
 // Explore.jsx
 import "./styles/explore.css";
 import Card from "./components/Card";
-import Sidebar from "./components/Sidebar";
 import searchIcon from "/images/search.svg";
 import add from "/images/add-circle.svg";
 import trending from "/images/trending-up.svg";
@@ -66,7 +65,6 @@ const topics = [
 export default function Explore() {
   return (
     <div className="explore">
-      <Sidebar />
       <main className="exploreMain">
         {/* Header Section - Styled like Home but without buttons */}
         <div className="exploreHeader">

@@ -5,7 +5,6 @@ import trending from "/images/trending-up.svg"
 import recent from "/images/time.svg"
 import star from "/images/star.svg"
 import Card from "./components/Card"
-import Sidebar from "./components/Sidebar"
 const cardsData = [
   {
     upvotes: 78,
@@ -33,7 +32,6 @@ const cardsData = [
 export default function Home() {
   return (
     <div className="home">
-        <Sidebar />
         <main id="homeMain">
             <p id="heading">Learn How Technology Really Works</p>
             <p className="homeText">Join African developers in deep-diving into the inner workings of technologies, libraries, and programming concepts. Move beyond tutorials to true understanding.</p>

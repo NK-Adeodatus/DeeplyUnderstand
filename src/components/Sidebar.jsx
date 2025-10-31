@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/sidebar.css";
 import logo from "/images/logo.svg";
@@ -12,9 +11,9 @@ import database from "/images/database.svg";
 import library from "/images/library.svg";
 import sidebar from "/images/sidebar-toggle.svg";
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const Sidebar = ({ isOpen, setIsOpen }) => {
+  // Remove the useState since we're getting isOpen from props
+  
   const sections = [
   {
     title: "Main",
@@ -42,23 +41,19 @@ const Sidebar = () => {
   }
 ];
 
-//☰
   return (
     <>
-      <button className="menu-btn" onClick={() => setIsOpen(true)}>
-        <img src={sidebar} alt='sidebar' className="nav-icon" />
-        
-      </button>
-
+      {/* Remove the menu button since it's now in Navigation.jsx */}
+      
       <aside className={`sidebar ${isOpen && "open"}`}>
         <div className="sidebar-header">
           <div className="brand">
             <img src={logo} alt="" className="logo-icon"/>
-            <span ></span>
+            <span></span>
             <span className="brand-name">TechDeep</span>
-          <button className="close-btn" onClick={() => setIsOpen(false)}>
-            ✖
-          </button>
+            <button className="close-btn" onClick={() => setIsOpen(false)}>
+              ✖
+            </button>
           </div>
         </div>
 
@@ -77,9 +72,6 @@ const Sidebar = () => {
           ))}
         </div>
       </aside>
-
-      {/* Overlay for close on click */}
-      {isOpen && <div className="overlay" onClick={() => setIsOpen(false)} />}
     </>
   );
 };
