@@ -7,6 +7,7 @@ import Explore from './Explore'
 import CreatePost from './CreatePost'
 import Category from './Category'
 import Contributors from './Contributors'
+import Profile from './Profile'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/databases" element={<Category categoryName="Databases" />} />
         <Route path="/frameworks" element={<Category categoryName="Frameworks & Libraries" />} />
         <Route path="/contributors" element={<Contributors />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   )

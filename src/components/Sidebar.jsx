@@ -62,7 +62,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             <div className="sidebar-section" key={index}>
               <p className="section-title">{section.title}</p>
               {section.items.map((item, i) => (
-                <Link to={item.path} className="sidebar-item" key={i}>
+                <Link to={item.path} className="sidebar-item" key={i} onClick={() => setIsOpen(false)}>
                     <img src={item.icon} alt={item.label} className="nav-icon" />
                     <span>{item.label}</span>
                 </Link>
@@ -70,6 +70,13 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               ))}
             </div>
           ))}
+        </div>
+
+        <div className="sidebar-footer">
+          <Link to="/profile" className="sidebar-item" onClick={() => setIsOpen(false)}>
+            <span className="nav-icon-emoji">⚙️</span>
+            <span>Profile</span>
+          </Link>
         </div>
       </aside>
     </>
