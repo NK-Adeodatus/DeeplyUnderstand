@@ -4,6 +4,7 @@ import Navigation from './Navigation'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
 import Explore from './Explore'
+import CreatePost from './CreatePost'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/explore" element={<Explore />} />
+        <Route path="/create" element={<CreatePost />} />
       </Routes>
     </>
   )
