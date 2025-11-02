@@ -90,3 +90,7 @@
     width: 16px;
     height: 16px;
 }
+
+.cardsContainer {
+    padding: 20px;
+}

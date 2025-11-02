@@ -3,17 +3,31 @@ import sidebar from "/images/sidebar-toggle.svg"
 import search from "/images/search.svg"
 import dark from "/images/dark-mode-night-moon.svg"
 import "./styles/navigation.css"
-import { Link } from 'react-router-dom'
 import { useState } from "react"
 import Sidebar from "./components/Sidebar"
+import AuthModal from "./components/AuthModal"
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authModalMode, setAuthModalMode] = useState("signin");
+
+  const handleSignInClick = (e) => {
+    e.preventDefault();
+    setAuthModalMode("signin");
+    setIsAuthModalOpen(true);
+  };
+
+  const handleSignUpClick = (e) => {
+    e.preventDefault();
+    setAuthModalMode("signup");
+    setIsAuthModalOpen(true);
+  };
 
   return (
     <>
       <nav id="navigation">
-        <div className="sidebarIconContainer" onClick={() => setIsOpen(true)}>
+        <div className="sidebarIconContainer" onClick={() => setIsSidebarOpen(true)}>
           <img className="sidebarIcon" src={sidebar} alt="sidebarIcon" />
         </div>
         <div className="searchContainer">
@@ -24,17 +38,19 @@ export default function Navigation() {
           <img className="darkmodeIcon" src={dark} alt="darkmodeIcon" />
         </div>
         <div className="profileButtonsContainer">
-          <Link to="/signin">
-            <button className="signinButton">SignIn</button>
-          </Link>
-          <Link to="/signup">
-            <button className="signupButton">Sign Up</button>
-          </Link>
+          <button className="signinButton" onClick={handleSignInClick}>SignIn</button>
+          <button className="signupButton" onClick={handleSignUpClick}>Sign Up</button>
         </div>
       </nav>
 
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
-      {isOpen && <div className="overlay" onClick={() => setIsOpen(false)} />}
+      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+      {isSidebarOpen && <div className="overlay" onClick={() => setIsSidebarOpen(false)} />}
+      
+      <AuthModal 
+        isOpen={isAuthModalOpen} 
+        setIsOpen={setIsAuthModalOpen} 
+        initialMode={authModalMode}
+      />
     </>
   )
 }

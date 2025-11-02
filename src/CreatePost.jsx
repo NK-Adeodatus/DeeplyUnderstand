@@ -1,113 +1,232 @@
 import { useState } from "react";
-import "./styles/createpost.css";
+import "./styles/createPost.css";
+import codeIcon from "/images/code.svg";
+import libraryIcon from "/images/library.svg";
+import databaseIcon from "/images/database.svg";
+import starIcon from "/images/star.svg";
 
-const CreatePost = () => {
-  const [tags, setTags] = useState([]);
+export default function CreatePost() {
+  const [formData, setFormData] = useState({
+    title: "",
+    category: "",
+    summary: "",
+    detailedExplanation: "",
+    tags: []
+  });
+  
   const [tagInput, setTagInput] = useState("");
 
-  const addTag = () => {
-    if (tagInput.trim() && tags.length < 5) {
-      setTags([...tags, tagInput.trim()]);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleAddTag = () => {
+    if (tagInput.trim() && formData.tags.length < 5) {
+      setFormData(prev => ({
+        ...prev,
+        tags: [...prev.tags, tagInput.trim()]
+      }));
       setTagInput("");
     }
   };
 
+  const handleRemoveTag = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      tags: prev.tags.filter((_, i) => i !== index)
+    }));
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleAddTag();
+    }
+  };
+
+  const handlePublish = () => {
+    // Handle publish logic
+    console.log("Publishing:", formData);
+  };
+
+  const handleSaveDraft = () => {
+    // Handle save draft logic
+    console.log("Saving draft:", formData);
+  };
+
   return (
-    <div className="create-container">
-      <h2 className="create-title">Create an Explanation</h2>
-      <p className="create-sub">
-        Share your deep understanding of how a technology or concept really
-        works
-      </p>
+    <div className="createPost">
+      <div className="createPostHeader">
+        <h1 className="createPostTitle">Create an Explanation</h1>
+        <p className="createPostSubtitle">
+          Share your deep understanding of how a technology or concept really works
+        </p>
+      </div>
 
-      <form className="create-form">
-
-        {/* Title */}
-        <div className="form-group">
-          <label>Title</label>
-          <input
-            type="text"
-            placeholder="e.g., How React's Virtual DOM Actually Works Under the Hood"
-          />
-          <small className="hint">
-            Be specific and descriptive about what you're explaining
-          </small>
+      <div className="explanationCard">
+        <div className="writeExplanationSection">
+          <h2 className="sectionTitle">Write Your Explanation</h2>
+          <p className="sectionDescription">Focus on explaining the internal workings and mechanisms</p>
         </div>
 
-        {/* Category */}
-        <div className="form-group">
-          <label>Category</label>
-          <select defaultValue="">
-            <option value="" disabled>Select a category</option>
-            <option>Web Development</option>
-            <option>Programming Languages</option>
-            <option>Databases</option>
-            <option>Frameworks & Libraries</option>
+        <div className="formSection">
+          <label className="formLabel">Title</label>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleInputChange}
+            className="formInput"
+            placeholder="e.g., How React's Virtual DOM Actually Works"
+          />
+          <p className="formHint">Be specific and descriptive about what you're explaining</p>
+        </div>
+
+        <div className="formSection">
+          <label className="formLabel">Category</label>
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleInputChange}
+            className="formSelect"
+          >
+            <option value="">Select a category</option>
+            <option value="web-dev">Web Development</option>
+            <option value="languages">Programming Languages</option>
+            <option value="databases">Databases</option>
+            <option value="frameworks">Frameworks & Libraries</option>
+            <option value="other">Other</option>
           </select>
         </div>
 
-        {/* Summary */}
-        <div className="form-group">
-          <label>Summary</label>
+        <div className="formSection">
+          <label className="formLabel">Summary</label>
           <textarea
-            rows="2"
-            placeholder="Brief overview of what you'll explain (2–3 sentences)"
-          ></textarea>
+            name="summary"
+            value={formData.summary}
+            onChange={handleInputChange}
+            className="formTextarea"
+            rows="3"
+            placeholder="Brief overview of what you'll explain (2-3 sentences)"
+          />
         </div>
 
-        {/* Detailed Explanation */}
-        <div className="form-group">
-          <label>Detailed Explanation</label>
+        <div className="formSection">
+          <label className="formLabel">Detailed Explanation</label>
           <textarea
-            rows="6"
-            placeholder="Write your in-depth explanation here. Include code examples, diagrams, and step-by-step breakdowns..."
-          ></textarea>
-          <small className="hint">Supports Markdown formatting</small>
+            name="detailedExplanation"
+            value={formData.detailedExplanation}
+            onChange={handleInputChange}
+            className="formTextarea formTextareaLarge"
+            rows="8"
+            placeholder="Write your in-depth explanation here. Include code examples, diagrams descriptions, and step-by-step breakdowns of how things work internally..."
+          />
+          <p className="formHint">Supports Markdown formatting.</p>
         </div>
-
-        {/* Tags */}
-        <div className="form-group">
-          <label>Tags (up to 5)</label>
-          
-          <div className="tag-input-wrapper">
-            <input
-              type="text"
-              placeholder="Add a tag"
-              value={tagInput}
-              onChange={(e) => setTagInput(e.target.value)}
-            />
-            <button type="button" onClick={addTag} className="add-tag-btn">+</button>
-          </div>
-
-          <div className="tags-list">
-            {tags.map((tag, i) => (
-              <span key={i} className="tag-pill">#{tag}</span>
-            ))}
-          </div>
-        </div>
-
-        {/* Buttons */}
-        <div className="btn-group">
-          <button className="primary-btn">Publish Explanation</button>
-          <button className="secondary-btn">Save Draft</button>
-        </div>
-      </form>
-
-      {/* Writing guidelines */}
-      <div className="guidelines">
-        <h4>Writing Guidelines</h4>
-        <ul>
-          <li>Explain internal mechanisms, not just usage</li>
-          <li>Use real examples and code snippets</li>
-          <li>Break down ideas clearly and logically</li>
-          <li>Be accurate and verify technical details</li>
-        </ul>
       </div>
 
-      {/* Inspiration */}
-      <div className="inspiration">
-        <h4>Need Inspiration?</h4>
-        <ul>
+      <div className="tagsSection">
+        <label className="formLabel">Tags (up to 5)</label>
+        <div className="tagsInputContainer">
+          <input
+            type="text"
+            value={tagInput}
+            onChange={(e) => setTagInput(e.target.value)}
+            onKeyPress={handleKeyPress}
+            className="tagInput"
+            placeholder="Add a tag"
+          />
+          <button 
+            type="button"
+            onClick={handleAddTag}
+            className="addTagButton"
+            disabled={formData.tags.length >= 5}
+          >
+            +
+          </button>
+        </div>
+        <div className="tagsList">
+          {formData.tags.map((tag, index) => (
+            <div key={index} className="tagItem">
+              <span>{tag}</span>
+              <button
+                type="button"
+                onClick={() => handleRemoveTag(index)}
+                className="removeTagButton"
+              >
+                ×
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="actionButtons">
+        <button 
+          type="button"
+          onClick={handlePublish}
+          className="publishButton"
+        >
+          Publish Explanation
+        </button>
+        <button 
+          type="button"
+          onClick={handleSaveDraft}
+          className="saveDraftButton"
+        >
+          Save Draft
+        </button>
+      </div>
+
+      <div className="guidelinesCard">
+        <h2 className="sectionTitle">Writing Guidelines</h2>
+        <div className="guidelinesList">
+          <div className="guidelineItem">
+            <div className="guidelineIconContainer">
+              <img src={libraryIcon} alt="Go Deep" className="guidelineIcon" />
+            </div>
+            <div className="guidelineContent">
+              <p className="guidelineTitle">Go Deep</p>
+              <p className="guidelineDescription">Explain internal mechanisms, not just usage</p>
+            </div>
+          </div>
+          <div className="guidelineItem">
+            <div className="guidelineIconContainer">
+              <img src={codeIcon} alt="Use Examples" className="guidelineIcon" />
+            </div>
+            <div className="guidelineContent">
+              <p className="guidelineTitle">Use Examples</p>
+              <p className="guidelineDescription">Include code snippets and real-world scenarios</p>
+            </div>
+          </div>
+          <div className="guidelineItem">
+            <div className="guidelineIconContainer">
+              <img src={starIcon} alt="Clarify Concepts" className="guidelineIcon" />
+            </div>
+            <div className="guidelineContent">
+              <p className="guidelineTitle">Clarify Concepts</p>
+              <p className="guidelineDescription">Break down complex ideas into understandable parts</p>
+            </div>
+          </div>
+          <div className="guidelineItem">
+            <div className="guidelineIconContainer">
+              <img src={databaseIcon} alt="Be Accurate" className="guidelineIcon" />
+            </div>
+            <div className="guidelineContent">
+              <p className="guidelineTitle">Be Accurate</p>
+              <p className="guidelineDescription">Cite sources and verify technical details</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="inspirationCard">
+        <h2 className="sectionTitle">Need Inspiration?</h2>
+        <ul className="inspirationList">
           <li>How does a compiler work?</li>
           <li>What happens during an HTTP request?</li>
           <li>How does garbage collection work?</li>
@@ -116,6 +235,4 @@ const CreatePost = () => {
       </div>
     </div>
   );
-};
-
-export default CreatePost;
+}

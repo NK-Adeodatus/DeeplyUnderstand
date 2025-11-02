@@ -5,6 +5,8 @@ import SignIn from './SignIn'
 import SignUp from './SignUp'
 import Explore from './Explore'
 import CreatePost from './CreatePost'
+import Category from './Category'
+import Contributors from './Contributors'
 
 function App() {
   return (
@@ -16,6 +18,11 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/create" element={<CreatePost />} />
+        <Route path="/web-dev" element={<Category categoryName="Web Development" />} />
+        <Route path="/languages" element={<Category categoryName="Programming Languages" />} />
+        <Route path="/databases" element={<Category categoryName="Databases" />} />
+        <Route path="/frameworks" element={<Category categoryName="Frameworks & Libraries" />} />
+        <Route path="/contributors" element={<Contributors />} />
       </Routes>
     </>
   )
